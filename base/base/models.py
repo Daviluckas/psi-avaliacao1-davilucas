@@ -1,36 +1,35 @@
-# models.py — Camada Model da Quitanda da Esquina (dados em memória)
+class Produto:
+    def __init__(self, id, nome, preco, categoria, unidade):
+        self.id = id
+        self.nome = nome
+        self.preco = preco
+        self.categoria = categoria
+        self.unidade = unidade
+
 
 usuarios = [
-    {"id": 1, "nome": "admin", "senha": "1234"},
+    {"id": 1, "nome": "admin", "senha": "1234"}
 ]
 
 produtos = [
-    {"id": 1, "nome": "Banana", "categoria": "Fruta", "preco": 5.50, "unidade": "kg"},
-    {"id": 2, "nome": "Maçã", "categoria": "Fruta", "preco": 7.90, "unidade": "kg"},
-    {"id": 3, "nome": "Alface", "categoria": "Verdura", "preco": 2.80, "unidade": "un"},
-    {"id": 4, "nome": "Cenoura", "categoria": "Legume", "preco": 3.40, "unidade": "kg"},
-    {"id": 5, "nome": "Tomate", "categoria": "Legume", "preco": 6.20, "unidade": "kg"},
+    Produto(1, "Banana", 5.50, "Fruta", "kg"),
+    Produto(2, "Maçã", 7.90, "Fruta", "kg"),
+    Produto(3, "Alface", 2.80, "Verdura", "un"),
+    Produto(4, "Cenoura", 3.40, "Legume", "kg"),
+    Produto(5, "Tomate", 6.20, "Legume", "kg")
 ]
 
 
 def buscar_produto(produto_id):
     for p in produtos:
-        if p["id"] == produto_id:
+        if p.id == produto_id:
             return p
     return None
 
 
 def buscar_por_categoria(categoria):
-    return [p for p in produtos if p["categoria"].lower() == categoria.lower()]
+    return [p for p in produtos if p.categoria == categoria]
 
 
-def buscar_por_nome(parte):
-    return [p for p in produtos if parte.lower() in p["nome"].lower()]
-
-
-def todas_categorias():
-    categorias = []
-    for p in produtos:
-        if p["categoria"] not in categorias:
-            categorias.append(p["categoria"])
-    return categorias
+def buscar_por_nome(nome):
+    return [p for p in produtos if nome in p.nome]

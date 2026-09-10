@@ -8,8 +8,8 @@
     </form>
     {% for p in produtos %}
         <div class="card">
-            <h3>{{ p['nome'] }}</h3>
-            <p>{{ p['categoria'] }} — R$ {{ p['preco'] }} por {{ p['unidade'] }}</p>
+            <h3>{{ p.nome }}</h3>
+            <p>{{ p.categoria }} — R$ {{ p.preco }} por {{ p.unidade }}</p>
             <a href="{{ url_for('ver_produto', produto_id=p['id']) }}">Ver detalhes</a>
         </div>
     {% else %}
